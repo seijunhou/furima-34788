@@ -2,43 +2,57 @@
 
 ## users テーブル
 
-| nick_name          | string   | NOT NULL |
-| email              | string   | NOT NULL |
-| password           | string   | NOT NULL |
-| first_name         | string   | NOT NULL |
-| last_name          | string   | NOT NULL |
-| first_name_kana    | string   | NOT NULL |
-| last_name_kana     | string   | NOT NULL |
-| date               | string   | NOT NULL |
+| nick_name          | string              | null:false |
+| email              | string              | unique:true|
+| encrypted_password | string              | null:false |
+| first_name         | string              | null:false |
+| last_name          | string              | null:false |
+| first_name_kana    | string              | null:false |
+| last_name_kana     | string              | null:false |
+| date               | date                | null:false |
 
 
-## goods テーブル
+has_many :items
+has_many :buy
 
 
-| goods_name              | string     | NOT NULL |
-| goods_explanation       | text       | NOT NULL |
-| goods_details_category  | integer    | NOT NULL |
-| goods_details_condition | integer    | NOT NULL |
-| burden_id               | integer    | NOT NULL |
-| area_id                 | integer    | NOT NULL |
-| days_ship_id            | integer    | NOT NULL |
-|price                    | integer    | NOT NULL |
+## item テーブル
+
+
+| name                    | string     | null:false |
+| explanation             | text       | null:false |
+| details_category_id     | integer    | null:false |
+| details_condition_id    | integer    | null:false |
+| burden_id               | integer    | null:false |
+| area_id                 | integer    | null:false |
+| days_ship_id            | integer    | null:false |
+|price                    | integer    | null:false |
 | user                    | references | foreign_key:true |
+
+
+belongs_to:user
+has_one:purchaser
 
 ## buy テーブル
 
 
-| user_id  | integer | foreign_key: true |
-| goods_id | integer | foreign_key: true |
+| user_id  | references | foreign_key: true |
+| item_id  | references | foreign_key: true |
 
+belongs_to :item
+belongs_to :user
+has_one :gest
 
 ## guest
 
 
-| postal_code     | string    | NOY NULL |
-| area_id         |integer    | NOT NULL |
-| municipality    | string    | NOT NULL |
-| adress          | string    | NOT NULL |
+| postal_code     | string    | null:false |
+| area_id         |integer    | null:false |
+| municipality    | string    | null:false |
+| adress          | string    | null:false |
 | building_name   | string    |------ |
-| telephone       | string    | NOT NULL |
+| telephone       | string    | null:false |
 | buy             | reference | foreign_key:true |
+
+
+belongs_to :buy
