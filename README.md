@@ -1,24 +1,44 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| nick_name          | string   | NOT NULL |
+| email              | string   | NOT NULL |
+| password           | string   | NOT NULL |
+| first_name         | string   | NOT NULL |
+| last_name          | string   | NOT NULL |
+| first_name_kana    | string   | NOT NULL |
+| last_name_kana     | string   | NOT NULL |
+| date               | string   | NOT NULL |
 
-* Ruby version
 
-* System dependencies
+## goods テーブル
 
-* Configuration
 
-* Database creation
+| goods_name              | string     | NOT NULL |
+| goods_explanation       | text       | NOT NULL |
+| goods_details_category  | integer    | NOT NULL |
+| goods_details_condition | integer    | NOT NULL |
+| burden_id               | integer    | NOT NULL |
+| area_id                 | integer    | NOT NULL |
+| days_ship_id            | integer    | NOT NULL |
+|price                    | integer    | NOT NULL |
+| user                    | references | foreign_key:true |
 
-* Database initialization
+## buy テーブル
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+| user_id  | integer | foreign_key: true |
+| goods_id | integer | foreign_key: true |
 
-* Deployment instructions
 
-* ...
+## guest
+
+
+| postal_code     | string    | NOY NULL |
+| area_id         |integer    | NOT NULL |
+| municipality    | string    | NOT NULL |
+| adress          | string    | NOT NULL |
+| building_name   | string    |------ |
+| telephone       | string    | NOT NULL |
+| buy             | reference | foreign_key:true |
