@@ -3,7 +3,7 @@
 ## users テーブル
 
 | nick_name          | string              | null:false |
-| email              | string              | unique:true|
+| email              | string              | null: false  unique:true |
 | encrypted_password | string              | null:false |
 | first_name         | string              | null:false |
 | last_name          | string              | null:false |
@@ -13,7 +13,7 @@
 
 
 has_many :items
-has_many :buy
+has_many :buys
 
 
 ## item テーブル
@@ -31,17 +31,17 @@ has_many :buy
 
 
 belongs_to:user
-has_one:purchaser
+has_one:buys
 
 ## buy テーブル
 
 
-| user_id  | references | foreign_key: true |
-| item_id  | references | foreign_key: true |
+| user  | references | foreign_key: true |
+| item | references | foreign_key: true |
 
 belongs_to :item
 belongs_to :user
-has_one :gest
+has_one :guest
 
 ## guest
 
@@ -52,7 +52,7 @@ has_one :gest
 | adress          | string    | null:false |
 | building_name   | string    |------ |
 | telephone       | string    | null:false |
-| buy             | reference | foreign_key:true |
+| buy             | references | foreign_key:true |
 
 
 belongs_to :buy
