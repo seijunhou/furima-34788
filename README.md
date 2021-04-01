@@ -9,14 +9,14 @@
 | last_name          | string              | null:false |
 | first_name_kana    | string              | null:false |
 | last_name_kana     | string              | null:false |
-| date               | date                | null:false |
+| birth_day          | date                | null:false |
 
 
 has_many :items
 has_many :buys
 
 
-## item テーブル
+## items テーブル
 
 
 | name                    | string     | null:false |
@@ -33,7 +33,7 @@ has_many :buys
 belongs_to:user
 has_one:buys
 
-## buy テーブル
+## buys テーブル
 
 
 | user  | references | foreign_key: true |
@@ -43,7 +43,7 @@ belongs_to :item
 belongs_to :user
 has_one :guest
 
-## guest
+## guests テーブル
 
 
 | postal_code     | string    | null:false |
