@@ -32,7 +32,7 @@ has_many :buys
 
 
 belongs_to:user
-has_one:buys
+has_one:buy
 
 ## buys テーブル
 
