@@ -19,6 +19,7 @@ has_many :buys
 ## items テーブル
 
 
+
 | name                    | string     | null:false |
 | explanation             | text       | null:false |
 | details_category_id     | integer    | null:false |
