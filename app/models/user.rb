@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
 
   with_options presence: true do
-  validates :nick_name, presence: true
+  validates :nick_name
   
   
   validates :first_name
@@ -22,7 +22,7 @@ class User < ApplicationRecord
     validates :last_name
   end
 
-  with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: '全角文字を使用してください' } do
+  with_options presence: true, format: { with: /[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+/, message: '全角文字を使用してください' } do
     validates :first_name_kana
     validates :last_name_kana
   end

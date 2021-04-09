@@ -106,7 +106,7 @@ RSpec.describe User, type: :model do
         end
 
         it 'emailは＠を含むこと' do
-          @user.email = '@'
+          @user.email = 'test.co.jp'
           @user.valid?
           expect(@user.errors.full_messages).to include("Email is invalid")
         end
@@ -134,18 +134,6 @@ RSpec.describe User, type: :model do
           @user.valid?
           expect(@user.errors.full_messages).to include('Last name kana 全角文字を使用してください')
         end
-
-
-
-      
-
-      
       end  
-
-
-
-      
-
-         
-  end
+    end
 end
